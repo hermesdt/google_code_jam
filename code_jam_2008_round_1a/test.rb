@@ -12,20 +12,12 @@ File.open("input.txt", "r") do |input|
       vector1 = parse.call(input.gets) 
       vector2 = parse.call(input.gets) 
 
-      aux, solution = [], 0 
-      vector1 = vector1.sort{|x, y| y <=> x}
+      solution = 0 
+      vector1 = vector1.sort{|x, y| x <=> y}
       vector2 = vector2.sort{|x, y| y <=> x}
-      #vector2.each{|elem| aux << [elem, "-"]}
 
-      while vector2.size > 0
-        v1 = vector1.delete_at 0
-        if v1 < 0
-          v2 = vector2.delete_at 0
-        else
-          v2 = vector2.pop
-        end
-
-        solution += v1 * v2
+      while vector1.size > 0
+        solution += vector1.pop * vector2.pop
       end
 
       output.puts "Case ##{test_case}: #{solution}"
