@@ -8,7 +8,7 @@ File.open("input.txt", "r") do |input|
 
     used_wires = []
     wires.each do |wire|
-      intersections += used_wires.select{|w| wire[0] < w[0] && wire[1] > w[1] || wire[0] > w[0] && wire[1] < w[1]}.size
+      intersections += used_wires.count{|w| wire[0] < w[0] && wire[1] > w[1] || wire[0] > w[0] && wire[1] < w[1]}
       used_wires << wire
     end
 
